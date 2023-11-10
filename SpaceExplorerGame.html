@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Space Explorer Game</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            background-color: black;
+            color: white;
+        }
+
+        canvas {
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: -1;
+        }
+
+        button {
+            background-color: red;
+            color: white;
+            padding: 30px 50px;
+            margin-top: 100px;
+            cursor: pointer;
+            border: 200;
+        }
+        h1 {
+            position: relative;
+            font-size: 100px;
+        }
+    </style>
+</head>
+<body>
+    <canvas id="myCanvas"></canvas>
+    <h1>Space Explorer Game</h1>
+    <button onclick="handleButtonClick()">Tap to Start</button>
+
+    <script>
+        var canvas = document.getElementById('myCanvas');
+        var context = canvas.getContext('2d');
+
+        // Set canvas size to match the viewport
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+
+        // Generate small white dots on the canvas
+        for (let i = 0; i < 500; i++) {
+            let x = Math.random() * canvas.width;
+            let y = Math.random() * canvas.height;
+            drawDot(x, y);
+        }
+
+        function drawDot(x, y) {
+            context.fillStyle = 'white';
+            context.fillRect(x, y, 1, 1); // Small white dot
+        }
+
+        function handleButtonClick() {
+            alert('Button Clicked!');
+        }
+    </script>
+</body>
+</html>
