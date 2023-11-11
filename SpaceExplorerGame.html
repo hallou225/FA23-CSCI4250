@@ -6,6 +6,7 @@
     <title>Space Explorer Game</title>
     <style>
         body {
+            overflow: hidden;
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -30,19 +31,26 @@
             margin-top: 100px;
             cursor: pointer;
             border: 200;
+            font-size: 30px;
         }
         h1 {
             position: relative;
             font-size: 100px;
         }
+        h2 {
+            color: yellow;
+            position: absolute;
+            font-size: 50px;
+        }
     </style>
-</head>
+</head> 
 <body>
     <canvas id="myCanvas"></canvas>
     <h1>Space Explorer Game</h1>
+    <h2>Tap.Explore.Learn</h2>
     <button onclick="handleButtonClick()">Tap to Start</button>
-
     <script>
+        // canvas Values being set
         var canvas = document.getElementById('myCanvas');
         var context = canvas.getContext('2d');
 
@@ -51,19 +59,17 @@
         canvas.height = window.innerHeight;
 
         // Generate small white dots on the canvas
-        for (let i = 0; i < 500; i++) {
-            let x = Math.random() * canvas.width;
-            let y = Math.random() * canvas.height;
-            drawDot(x, y);
+        generateStars();
+        function generateStars() {
+            for (var i = 0; i < 500; i++) {
+                var x = Math.random() * canvas.width;
+                var y = Math.random() * canvas.height;
+                context.fillStyle = 'white';
+                context.fillRect(x, y, 1, 1);
+            }
         }
-
-        function drawDot(x, y) {
-            context.fillStyle = 'white';
-            context.fillRect(x, y, 1, 1); // Small white dot
-        }
-
         function handleButtonClick() {
-            alert('Button Clicked!');
+            window.location.href = 'CharacterSelection.html';
         }
     </script>
 </body>

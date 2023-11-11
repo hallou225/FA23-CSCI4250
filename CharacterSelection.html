@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CharacterSelection</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            padding: 0;
+            background-color: black;
+            color: white;
+        }
+
+        canvas {
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: -1;
+        }
+        h1 {
+            position: relative;
+            top: -300px;
+            text-align: center;
+            font-size: 100px;
+        }
+        h2 {
+            color: yellow;
+            top: 200px;
+            position: absolute;
+            font-size: 30px;
+        }
+        .circle {
+            position: absolute;
+            background-color: red;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            margin-right: 0;
+            cursor: pointer;
+        }
+        .square {
+            position: absolute;
+            background-color: blue;
+            width: 50px;
+            height: 50px;
+            margin-right: 500px;
+            cursor: pointer;
+        }
+        .triangle {
+        position: absolute;
+        cursor: pointer;
+        margin-left: 500px;
+      border-left: 25px solid transparent;
+      border-right: 25px solid transparent;
+      border-bottom: 50px solid green;
+    }
+    button {
+        background-color: lightgreen;
+            color: white;
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            padding: 50px 100px;
+            margin-top: 100px;
+            cursor: pointer;
+            border: 200;
+            font-size: 30px;
+    }
+    </style>
+</head> 
+<body>
+    <canvas id="myCanvas"></canvas>
+    <h1>CharacterSelection</h1>
+    <h2>Pick a Character to explore planets with!</h2>
+    <div class="circle" onclick="handleShapeClick('circle')"></div>
+    <div class="square" onclick="handleShapeClick('square')"></div>
+    <div class="triangle" onclick="handleShapeClick('triangle')"></div>
+    <div class="button"><button onclick="HomeButton()">Home</button></div>
+    <div><button onclick="HomeButton()">Home</button></div>
+    <script> // Code functions are here
+        // canvas Values being set
+        var canvas = document.getElementById('myCanvas');
+        var context = canvas.getContext('2d');
+
+        // Set canvas size to match the viewport
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+
+        // Generate small white dots on the canvas
+        generateStars();
+        function generateStars() {
+            for (var i = 0; i < 500; i++) {
+                var x = Math.random() * canvas.width;
+                var y = Math.random() * canvas.height;
+                context.fillStyle = 'white';
+                context.fillRect(x, y, 1, 1);
+            }
+        }
+        function HomeButton() {
+            window.location.href = 'SpaceExplorerGame.html';
+        }
+    </script>
+
+</body>
+</html>
