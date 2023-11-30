@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Space Explorer Game</title>
     <style>
-        body {
+    body {
             overflow: hidden;
             display: flex;
             flex-direction: column;
@@ -16,15 +16,13 @@
             background-color: black;
             color: white;
         }
-
-        canvas {
+    canvas {
             position: absolute;
             top: 0;
             left: 0;
             z-index: -1;
         }
-
-        button {
+    button {
             background-color: red;
             color: white;
             padding: 30px 50px;
@@ -32,42 +30,34 @@
             cursor: pointer;
             border: 200;
             font-size: 30px;
+            border-radius: 30px;
         }
-        h1 {
+    h1 {
             position: relative;
             font-size: 100px;
         }
-        h2 {
+    h2 {
             color: yellow;
             position: absolute;
             font-size: 50px;
         }
     </style>
 </head> 
-<body>
+<body style="background: url('https://www.worldatlas.com/r/w1200-q80/upload/d8/6e/21/shutterstock-311871896-01.jpg') no-repeat center center fixed; -webkit-background-size: cover; -moz-background-size: cover; -o-background-size: cover; background-size: cover;">
     <canvas id="myCanvas"></canvas>
     <h1>Space Explorer Game</h1>
-    <h2>Tap.Explore.Learn</h2>
+    <h2>Tap.Explore.Learn</h2> 
     <button onclick="handleButtonClick()">Tap to Start</button>
     <script>
         // canvas Values being set
         var canvas = document.getElementById('myCanvas');
         var context = canvas.getContext('2d');
 
-        // Set canvas size to match the viewport
+        // Set canvas size to match the viewport, allowing canvas to grab screen dimensions
         canvas.width = window.innerWidth;
         canvas.height = window.innerHeight;
 
-        // Generate small white dots on the canvas
-        generateStars();
-        function generateStars() {
-            for (var i = 0; i < 500; i++) {
-                var x = Math.random() * canvas.width;
-                var y = Math.random() * canvas.height;
-                context.fillStyle = 'white';
-                context.fillRect(x, y, 1, 1);
-            }
-        }
+        // button of "Tap to Start" to navigate to page CharacterSelection
         function handleButtonClick() {
             window.location.href = 'CharacterSelection.html';
         }
