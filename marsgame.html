@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Game</title>
+    <title>Mars Game</title>
     <style>
         #container, #info, #controller {
             width: 800px;
@@ -25,6 +25,11 @@
             height: 100px;
             position: relative;
         }
+        #container {
+            background-image: url('Img\\Planets\\MarsBackgorund.png');
+            background-size: cover;
+            background-position: center;
+        }
         button {
             position: absolute;
             padding: 15px 25px;
@@ -39,7 +44,7 @@
         }
         #left-button {
             bottom: 20px;
-            left: 5%;
+            left: 50%;
             background-color: green;
             box-shadow: 0px 1px 4px -2px black;
         }
@@ -51,7 +56,7 @@
         }
         #home-button{
             bottom: 20px;
-            left: 25%;
+            left: 5%;
             background-color: red;
             box-shadow: 0px 1px 4px -2px black;
         }
@@ -105,7 +110,7 @@
         #ball {
             width: 100px;
             height: 100px;
-            background-image: url('https://png.pngtree.com/png-clipart/20231017/original/pngtree-meteorite-space-fire-png-image_13340354.png');
+            background-image: url('Img\\Misc\\Meteorite.png');
             background-size: cover;
             background-position: center;
             position: absolute;
@@ -116,17 +121,24 @@
         #star {
             width: 50px;
             height: 50px;
-            background-image: url('https://pngimg.com/d/star_PNG41462.png');
+            background-image: url('Img\\Misc\\Star.png');
             background-size: cover;
             background-position: center;
             position: absolute;
             top: 0;
             left: 80%;
             transform: translateX(-50%);
-        }   
+        }  
+        #lives {
+            position: absolute;
+            bottom: 450px;
+            left: 2%; 
+            color: white; 
+            z-index: 1000; 
+        }
     </style>
 </head>
-<body style="background: url('https://www.worldatlas.com/r/w1200-q80/upload/d8/6e/21/shutterstock-311871896-01.jpg') no-repeat center center fixed; -webkit-background-size: cover; -moz-background-size: cover; -o-background-size: cover; background-size: cover;">
+<body style="background: url('Img\\Misc\\MainBackground.webp') no-repeat center center fixed; -webkit-background-size: cover; -moz-background-size: cover; -o-background-size: cover; background-size: cover;">
     <div id="info">
         <h1>Beginning your Adventure</h1>
         <p>Use the left and right buttons to move your character to avoid the incoming Meteorite!!!! <br>Collect the star to increase your progress bar.</p>
@@ -139,6 +151,7 @@
     </div>
     <div id="container">
         <div id="game-container">
+            <p id="lives">Character Lives: <span id="lives-span">3</span></p>
             <div id="character">
                 <img src="your-image-url.jpg" alt="Character Image">
             </div>
@@ -148,7 +161,6 @@
     </div>
     <div id="controller">
         <button id="left-button" onclick="moveCharacter('left')">Move Left</button>
-        <p>Character Lives: <span id="lives">3</span></p>
         <button id="home-button" onclick="BackHome('home')">Home</button>
         <button id="right-button" onclick="moveCharacter('right')">Move Right</button>
     </div>
@@ -180,7 +192,7 @@
         
         // Set the progress label based on the selected planet
         var progressLabel = document.getElementById('progress-label');
-        progressLabel.innerText = 'Heading Towards Planet ' + selectedPlanet;
+        progressLabel.innerText = 'Heading Towards Planet Mars which is 233.87 million miles from earth';
         
         function moveCharacter(direction) {
             // Move the character left or right
@@ -210,14 +222,8 @@
 
     if (progress >= 100) {
         // Redirect to the corresponding planet page when the progress is complete
-        switch (selectedPlanet.toLowerCase()) {
-            case 'saturn which is 909.65 million miles from earth':
-            window.location.href = 'Saturn.html?character=' + selectedCharacter + '&image=' + selectedImage;
-                break;
-            case 'mars which is 233.87 million miles from earth':
             window.location.href = 'Mars.html?character=' + selectedCharacter + '&image=' + selectedImage;
-                break;
-        }
+
     }
 }
         
@@ -255,7 +261,8 @@
             }
         }
         var lives = 3; // Initialize lives to 3
-        var livesSpan = document.getElementById('lives');
+        var livesSpan = document.getElementById('lives-span');
+        // collision checking
         function checkCollision() {
             var characterRect = character.getBoundingClientRect();
             var ballRect = ball.getBoundingClientRect();
@@ -324,10 +331,10 @@
         
         // Start the game loop when the page loads, with random star and ball drops
         window.onload = function () {
-            resetBall();
-            resetStar();
-          startGame();
-           gameLoop();
+          resetBall();
+          resetStar();
+         startGame();
+          gameLoop();
         };
         </script>
 </body>

@@ -20,7 +20,7 @@
         }
         #container {
             height: 300px;
-            background-image: url('https://www.astronomy.com/wp-content/uploads/sites/2/2021/09/W00077250234_coul_hi_web.jpg');
+            background-image: url('Img\\Planets\\SaturnFacts.webp');
             background-size: cover;
             background-position: center;
         }
@@ -28,8 +28,17 @@
             height: 110px;
         }
         #facts {
-            height: 250px;
+            height: 270px;
             position: relative;
+        }
+        #facts p {
+            text-align: center; 
+        }
+
+        #facts ul {
+            list-style-position: inside; 
+            text-align: left; 
+            display: inline-block; 
         }
         #option {
             height: 100px;
@@ -81,7 +90,7 @@
 
     </style>
 </head>
-<body style="background: url('https://www.worldatlas.com/r/w1200-q80/upload/d8/6e/21/shutterstock-311871896-01.jpg') no-repeat center center fixed; -webkit-background-size: cover; -moz-background-size: cover; -o-background-size: cover; background-size: cover;">
+<body style="background: url('Img\\Misc\\MainBackground.webp') no-repeat center center fixed; -webkit-background-size: cover; -moz-background-size: cover; -o-background-size: cover; background-size: cover;">
     <div id="info">
         <h1>Arrived at Saturn</h1>
         <p>You made it to Saturn!! now lets learn some interesting facts about Saturn!</p>
@@ -95,11 +104,19 @@
     </div>
     <div id="facts">
         <h1>Interesting Facts about Saturn:</h1>
-        <p><li>Saturn is a gas planet, which means you have no surface to stand on.</li><br><li>Saturn has the most recorded moons, with a total of 82!</li><br><li>A Year on Saturn would be 29 years on Earth.</li><br><li>You are actually able to see Saturn through a telescope</li><br><li>Saturn has very crazy winds that can reach up to 1,800 kilometres.</li></p>
+         <p> 
+            <ul>
+            <li>Saturn is a gas planet, which means you have no surface to stand on.</li><br>
+            <li>Saturn has the most recorded moons, with a total of 82!</li><br>
+            <li>A Year on Saturn would be 29 years on Earth.</li><br>
+            <li>You are actually able to see Saturn through a telescope</li><br>
+            <li>Saturn has very crazy winds that can reach up to 1,800 kilometres.</li>
+            </ul>
+        </p>
     </div>
     <div id="option">
         <button id="home-button" onclick="BackHome()">Home</button>
-        <button id="path-button" onclick="BackPath()">Path Selection</button>
+        <button id="path-button" onclick="BackPath()">Back to Path</button>
     </div>
 <script>
 // signing character value the character id valuable

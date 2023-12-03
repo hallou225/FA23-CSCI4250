@@ -3,21 +3,33 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Character Selection page</title>
+    <title>Character Selection Page</title>
     <style>
-#container, #info {
+#container, #info, #controller {
     width: 700px;
     height: 600px;
-    margin: 10px auto;
+    margin: 30px auto;
     background-color: white;
     background-size: 150px 150px;
     animation: scroll 5s linear infinite;
     border: 10px solid black;
     border-radius: 20px;
     text-align: center;
+    position: relative;
 }
 #info {
     height: 100px;
+    }
+#controller {
+    height: 100px;
+        left: 50%;
+        transform: translateX(-50%);
+        bottom: -10px;
+        position: fixed;
+        z-index: 999;
+    }
+    #container {
+        top: -20px;
     }
 
 @keyframes scroll
@@ -72,39 +84,47 @@ button{
 button:after{
     content: '';
     position: absolute;
+    background-color: green;
     top: 5px;
     left: 5px;
     width: calc(100% - 4px);
     height: 20%;
-    background: linear-gradient(rgba(255,255,255,1), rgba(255,255,255,0.2));
+    background: linear-gradient(rgba(255,255,255,1), rgba(255, 255, 255, 0.2));
     border-radius: 10px;
 }
 button:hover {
+    background-color: lightgreen;
     color: black;
-    font-size: 28px;
+    font-size: 25px;
 }
-
-#superman 
-{
-    background-image: linear-gradient(red, blue);
+button.active {
+    background-color: green; /* Change this to your desired color */
+    color: black; /* Change this to your desired text color */
 }
-#unicorn 
-{
-    background-image: linear-gradient(pink, purple);
-}
-#rocket
-{
-    background-image: linear-gradient(grey, black);
-}
-#alien 
-{
-    background-image: linear-gradient(Green, lightgreen);
-}
-#begin-button {
-            display: none;
-            position: fixed;
-            bottom: 100px;
-            left: 50%;
+#home-button{
+            position: absolute;
+            bottom: 20px;
+            left: 20%;
+            transform: translateX(-50%);
+            padding: 15px 25px;
+            background-color: yellow;
+            color: black;
+            font-size: 20px;
+            font-family: sans-serif;
+            font-weight: bold;
+            border-radius: 10px;
+            box-shadow: 0px 1px 4px -2px black;
+            text-shadow: 0px -1px black;
+            cursor: pointer;
+        }
+        #home-button:hover {
+            background-color: gold;
+            }
+        #next-button {
+        display: none;
+            position: absolute;
+            bottom: 20px;
+            left: 80%;
             transform: translateX(-50%);
             padding: 15px 25px;
             background-color: yellow;
@@ -116,7 +136,7 @@ button:hover {
             box-shadow: 0px 1px 4px -2px black;
             text-shadow: 0px -1px black;
             }
-        #begin-button:hover {
+        #next-button:hover {
             background-color: gold;
             }
         p {
@@ -124,56 +144,84 @@ button:hover {
             }
     </style>
 </head> 
-<body style="background: url('https://www.worldatlas.com/r/w1200-q80/upload/d8/6e/21/shutterstock-311871896-01.jpg') no-repeat center center fixed; -webkit-background-size: cover; -moz-background-size: cover; -o-background-size: cover; background-size: cover;">
-    <div id="container">
-        <div id="image">
-            <h1 id="name">superman</h1>
-            <img src="https://www.freepnglogos.com/uploads/superman-png/superman-put-your-superpower-cape-impactiviti-13.png" alt="">
-        </div>
-        <div id="controls">
-            <button id="superman" onclick="ChangeCharacter('superman')">SuperMan</button>
-            <button id="unicorn" onclick="ChangeCharacter('unicorn')">Unicorn</button>
-            <button id="rocket" onclick="ChangeCharacter('rocket')">Rocket</button>
-            <button id="alien" onclick="ChangeCharacter('alien')">Alien</button>
-        </div>
-        <a id="begin-button" onclick="beginAdventure()">Begin</a>
-    </div>
+<body style="background: url('Img\\Misc\\Mainbackground.webp') no-repeat center center fixed; -webkit-background-size: cover; -moz-background-size: cover; -o-background-size: cover; background-size: cover;">
     <div id="info">
         <h2>Character Selection</h2>
         <p>Pick a character you would like to explore the solar system with!</p>
     </div>
+    <div id="container">
+        <div id="image">
+            <h1 id="name"></h1>
+            <img src="Img\Player\randomCharacter.png" alt="">
+        </div>
+        <div id="controls">
+            <button id="superman" onclick="ChangeCharacter(this)">Superman</button>
+            <button id="unicorn" onclick="ChangeCharacter(this)">Unicorn</button>
+            <button id="rocket" onclick="ChangeCharacter(this)">Rocket</button>
+            <button id="alien" onclick="ChangeCharacter(this)">Alien</button>
+        </div>
+        <div id="controller">
+            <button id="home-button" onclick="BackHome('home')">Home</button>
+            <a id="next-button" onclick="NextToPath()">Next</a>
+        </div>
+    </div>
+
 
     <script>
-        function ChangeCharacter(character) {
-            switch (character) {
-                case "superman":
-                    document.getElementById("image").getElementsByTagName("img")[0].src = "https://www.freepnglogos.com/uploads/superman-png/superman-put-your-superpower-cape-impactiviti-13.png";
-                    document.getElementById("name").innerHTML = "superman";
-                    break;
-                case "unicorn":
-                    document.getElementById("image").getElementsByTagName("img")[0].src = "https://www.freepnglogos.com/uploads/unicorn-png/the-rainbow-unicorn-thenotinsane-deviantart-16.png";
-                    document.getElementById("name").innerHTML = "unicorn";
-                    break;
-                case "rocket":
-                    document.getElementById("image").getElementsByTagName("img")[0].src = "https://www.freeiconspng.com/thumbs/rocket-ship-png/rocket-ship-png-12.png";
-                    document.getElementById("name").innerHTML = "rocket";
-                    break;
-                case "alien":
-                    document.getElementById("image").getElementsByTagName("img")[0].src = "https://images.vexels.com/media/users/3/301767/isolated/preview/1d3a351ed08ea8f087902f03fd7ee74b-space-kawaii-alien-cartoon-character.png";
-                    document.getElementById("name").innerHTML = "alien";
-                    break;
-            }
-    
-            // Show the "Begin" button
-            document.getElementById("begin-button").style.display = "block";
-            // Add the character and image information to the URL
-            document.getElementById("begin-button").href = 'PathSelection.html?character=' + encodeURIComponent(character) + '&image=' + encodeURIComponent(document.getElementById("image").getElementsByTagName("img")[0].src);
+function ChangeCharacter(characterButton) {
+    // Array of character names and corresponding image URLs
+    const characters = {
+        superman: "Img\\Player\\superman.png",
+        unicorn: "Img\\Player\\unicorn.png",
+        rocket: "Img\\Player\\rocket.png",
+        alien: "Img\\Player\\alien.png",
+    };
+
+    // Get the character name from the button's ID
+    const characterName = characterButton.id;
+
+    // Set the image and name based on the selected character
+    document.getElementById("image").getElementsByTagName("img")[0].src = characters[characterName];
+    document.getElementById("name").innerHTML = characterName;
+
+    // Remove the 'active' class from all buttons
+    document.querySelectorAll('button').forEach(button => {
+        button.classList.remove('active');
+    });
+
+    // Add the 'active' class to the clicked button
+    characterButton.classList.add('active');
+
+    // Show the "Begin" button
+    document.getElementById("next-button").style.display = "block";
+
+    // Add the character and image information to the URL
+    document.getElementById("next-button").href = 'PathSelection.html?character=' + encodeURIComponent(characterName) + '&image=' + encodeURIComponent(characters[characterName]);
+}
+        function backgroundChange(){
+            var button = document.getElementById("buttonSelected");
+        }
+        // back home
+        function BackHome() {
+            // Define the action for the back button
+            window.location.href = 'HomePage.html';
         }
         // Begin function called for the begin button
-        function beginAdventure() {
-            // Navigate to the next page with character and image information in the URL
-            window.location.href = document.getElementById("begin-button").href;
-        }
+        function NextToPath() {
+        // Get the selected character name and image URL
+        var selectedCharacter = document.getElementById("selected-character").innerText;
+        var selectedImage = document.getElementById("middle-image").getElementsByTagName("img")[0].src;
+
+        // Encode the values to pass them as URL parameters
+        var encodedCharacter = encodeURIComponent(selectedCharacter);
+        var encodedImage = encodeURIComponent(selectedImage);
+
+        // Construct the href with the parameters
+        var href = 'PathSelection.html?character=' + encodedCharacter + '&image=' + encodedImage;
+
+        // Navigate to the path selection page with the parameters
+        window.location.href = href;
+    }
     </script>
 </body>
 </html>
