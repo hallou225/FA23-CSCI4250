@@ -5,12 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Path Selection Page</title>
     <style>
-        #container, #info, #controller {
+        #container, #info, #controller, #mars, #saturn {
             width: 700px;
             height: 600px;
             margin: 20px auto;
             background-color: white;
-            background-size: 700px 600px;
+            background-position: center; 
             border: 10px solid black;
             border-radius: 20px;
             text-align: center;
@@ -29,7 +29,12 @@
         }
         #container {
             background-image: url('Img\\Planets\\RandomPlanet.png');
-            position: relative;
+        }
+        #mars {
+            background-image: url('Img\\Planets\\Mars.jpg');
+        }
+        #saturn {
+            background-image: url('Img\\Planets\\Saturn.jpg');
         }
         #image {
             height: 88%;
@@ -38,10 +43,10 @@
             position: relative;
         }
         img {
-            margin-top: 10px;
+            margin-top: 100px;
             height: auto;
-            max-height: 100px;
-            max-width: 100px;
+            max-height: 1000px;
+            max-width: 1000px;
             animation: gloweffect 2s infinite;
         }
         @keyframes gloweffect {
@@ -204,11 +209,16 @@
             var image = getParameterByName('image');
         });
 
-    function ChangeBackground(imageUrl, characterName, characterButton) {
+        function ChangeBackground(imageUrl, characterName, characterButton) {
     var container = document.getElementById("container");
+    var beginButton = document.getElementById("begin-button");
+    var imageElement = document.querySelector("#image img");
 
     // Set background image
     container.style.backgroundImage = `url('${imageUrl}')`;
+
+    // Set image source
+    imageElement.src = imageUrl;
 
     // Update character name
     document.getElementById("name").innerHTML = characterName;
@@ -222,12 +232,15 @@
     characterButton.classList.add('active');
 
     // Show/hide the Begin button based on the clicked button
-    var beginButton = document.getElementById("begin-button");
     if (characterName === 'Saturn' || characterName === 'Mars') {
         beginButton.style.display = "block";
     } else {
         beginButton.style.display = "none";
     }
+
+    // Apply Saturn or Mars CSS class to the container
+    container.classList.remove('saturn', 'mars'); // Remove previous classes
+    container.classList.add(characterName.toLowerCase());
 }
         // home button
         function BackHome() {

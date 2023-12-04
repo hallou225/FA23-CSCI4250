@@ -50,3 +50,11 @@ updated the progress bar so it loads smoother and not chunky like before
 also added a star which allows for user to collect and it increases the progress bar faster
 then worked on mars and saturn pages to display a win page and information for user to learn and explore these 2 planets
 when user finished the progress bar in the game page, depending on chosen path they get taken to that planet they chose
+12/1/2023 & 12/2/2023
+---------------------------------------------------------------------------------------------
+Remodeled the character selection so the buttons show what you selected and what button you are hovered over
+remodeled the path selection to do the same as well as show begin button before starting the adventure
+added all images into the right folders so it looks neat to view
+added saturngame and marsgame to separate the backgrounds when either taking the saturn path or mars path
+small details and fixes, like controller bar for the character selection page to keep buttons in place
+also lined up the bullet points on the fact pages so information is easier to read and view
